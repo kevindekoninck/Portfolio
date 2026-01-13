@@ -14,9 +14,6 @@ import {
   ExternalLink,
   Calendar,
   School,
-  Database,
-  Smartphone,
-  Globe,
   Server
 } from 'lucide-react'
 
@@ -425,11 +422,10 @@ function App() {
                 className="glass-card rounded-3xl p-6 transition hover:border-purple-500/30"
               >
                 <div className="mb-3 flex items-center gap-3">
-                  <formation.icon className={`h-6 w-6 ${
-                    formation.color === 'purple' ? 'text-purple-400' :
-                    formation.color === 'pink' ? 'text-pink-400' :
-                    'text-blue-400'
-                  }`} />
+                  <formation.icon className={`h-6 w-6 ${formation.color === 'purple' ? 'text-purple-400' :
+                      formation.color === 'pink' ? 'text-pink-400' :
+                        'text-blue-400'
+                    }`} />
                   <h3 className="text-lg font-semibold">{formation.diplome}</h3>
                 </div>
                 <p className="mb-2 text-sm text-slate-400">{formation.ecole}</p>
@@ -458,7 +454,7 @@ function App() {
 
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold mb-6">Tous les projets</h3>
-            
+
             {/* Grille de Projets optimisée */}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((projet, index) => {
@@ -472,17 +468,15 @@ function App() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{ y: -8, scale: 1.02 }}
                     onClick={() => setSelectedProject(projet)}
-                    className={`group glass-card cursor-pointer flex flex-col justify-between rounded-3xl p-6 transition duration-300 ${
-                      isSelected ? 'gradient-border border-2 bg-white/10' : 'hover:bg-white/5'
-                    }`}
+                    className={`group glass-card cursor-pointer flex flex-col justify-between rounded-3xl p-6 transition duration-300 ${isSelected ? 'gradient-border border-2 bg-white/10' : 'hover:bg-white/5'
+                      }`}
                   >
                     <div>
                       <div className="mb-4 flex items-start justify-between">
-                        <span className={`rounded-full border px-3 py-1 text-xs font-medium ${
-                          projet.type === 'scolaire' 
+                        <span className={`rounded-full border px-3 py-1 text-xs font-medium ${projet.type === 'scolaire'
                             ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
                             : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
-                        }`}>
+                          }`}>
                           {projet.type === 'scolaire' ? 'École' : 'Perso'}
                         </span>
                         {/* Icone dynamique selon les technos principales (simplifié ici avec Code) */}
@@ -490,7 +484,7 @@ function App() {
                       </div>
                       <h4 className="mb-2 text-xl font-semibold group-hover:text-purple-300 transition-colors">{projet.titre}</h4>
                       <p className="mb-4 line-clamp-2 text-sm text-slate-400">{projet.resume}</p>
-                      
+
                       {projet.techno.length > 0 && (
                         <div className="mb-4 flex flex-wrap gap-2">
                           {projet.techno.slice(0, 3).map((t) => (
@@ -509,10 +503,9 @@ function App() {
                         </div>
                       )}
                     </div>
-                    
-                    <div className={`mt-auto flex items-center gap-2 text-sm font-medium transition ${
-                      isSelected ? 'text-purple-300' : 'text-slate-400 group-hover:text-white'
-                    }`}>
+
+                    <div className={`mt-auto flex items-center gap-2 text-sm font-medium transition ${isSelected ? 'text-purple-300' : 'text-slate-400 group-hover:text-white'
+                      }`}>
                       <span>Voir les détails</span>
                       <ArrowRight className={`h-4 w-4 transition-transform ${isSelected ? 'translate-x-1' : 'group-hover:translate-x-1'}`} />
                     </div>
@@ -533,11 +526,10 @@ function App() {
               >
                 <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <span className={`mb-2 inline-block rounded-full border px-3 py-1 text-xs font-medium ${
-                      selectedProject.type === 'scolaire' 
+                    <span className={`mb-2 inline-block rounded-full border px-3 py-1 text-xs font-medium ${selectedProject.type === 'scolaire'
                         ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
                         : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
-                    }`}>
+                      }`}>
                       {selectedProject.type === 'scolaire' ? 'Projet d\'école' : 'Projet personnel'}
                     </span>
                     <h3 className="mt-2 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
@@ -565,16 +557,16 @@ function App() {
                     )}
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="md:col-span-2">
                     <h4 className="text-lg font-semibold text-slate-200 mb-2">À propos du projet</h4>
                     <p className="text-lg text-slate-300 leading-relaxed">{selectedProject.description}</p>
                   </div>
-                  
+
                   <div className="bg-white/5 rounded-2xl p-6 border border-white/5 h-fit">
                     <p className="mb-4 font-semibold text-slate-200 flex items-center gap-2">
-                      <Server className="w-4 h-4 text-purple-400"/> Stack technique
+                      <Server className="w-4 h-4 text-purple-400" /> Stack technique
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.techno.map((t) => (
