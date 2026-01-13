@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950 text-slate-50 antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-purple-500/30 text-purple-50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/5 border border-white/10 backdrop-blur-xl;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    border: 1px solid transparent;
+    background-image:
+      linear-gradient(#0f172a, #0f172a),
+      linear-gradient(to right, #a855f7, #ec4899, #3b82f6);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .section-padding {
+    @apply px-4 py-20 md:px-8 lg:px-16;
+  }
+}
