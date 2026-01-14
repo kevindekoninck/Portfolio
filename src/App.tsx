@@ -32,64 +32,44 @@ type Project = {
 const initialProjects: Project[] = [
   {
     id: 1,
-    titre: 'Portfolio React – ETNA',
-    type: 'personnel',
-    techno: ['React', 'TypeScript', 'TailwindCSS', 'Framer Motion'],
-    resume: "Un portfolio immersif pour présenter mon parcours de reconversion.",
+    titre: 'Blog-Manager',
+    type: 'scolaire',
+    techno: ['React', 'TypeScript', 'CSS'],
+    resume: "Un site pour poster, éditer et supprimé des articles.",
     description:
-      "Ce portfolio met en avant ma reconversion depuis l'hôtellerie-restauration vers le développement d'applications. Il illustre ma capacité à créer des interfaces modernes, accessibles et responsive tout en racontant une histoire cohérente autour de mon profil.",
-    github: 'https://github.com/ton-github/portfolio',
+      "Ce projet à été mis en place pour mettre en application les compétences acquises en React et TypeScript. Le but, un site sur lequel on peut créer, éditer ou supprimé une article.",
+    github: 'https://github.com/kevindekoninck/blog-manager',
   },
   {
     id: 2,
-    titre: 'API Gestion de Stock',
+    titre: 'To-do-manager',
     type: 'scolaire',
-    techno: ['Node.js', 'Express', 'MongoDB', 'Docker'],
-    resume: "Backend complet pour une application de gestion d'inventaire.",
+    techno: ['Vue.js', 'TypeScript', 'CSS'],
+    resume: "Le Front-end complet inspiré par trello.",
     description:
-      "Développement d'une API RESTful sécurisée permettant la gestion CRUD de produits. Mise en place de l'authentification JWT, validation des données avec Zod et conteneurisation de l'environnement de développement avec Docker.",
-    github: 'https://github.com/ton-github/api-stock',
+      "Ce projet est inspiré de trello en terme de fonctionnalité. Après notre semaine d'apprentissage de Vue.js, mon objectif, était de mettre en oeuvre ce que j'ai pu apprendre et mes inspirations perso.",
+    github: 'https://github.com/kevindekoninck/To-Do-Manager',
   },
   {
     id: 3,
-    titre: 'Task Manager Mobile',
-    type: 'personnel',
-    techno: ['React Native', 'Expo', 'Firebase'],
-    resume: "Application mobile de gestion de tâches quotidiennes.",
+    titre: 'Contact-CRM',
+    type: 'scolaire',
+    techno: ['Angular', 'Typescript', 'CSS'],
+    resume: "Site de contact incluant le nom, l'email, le téléphone, ...",
     description:
-      "Création d'une application mobile cross-platform (iOS/Android) pour gérer la productivité. Utilisation de Firebase pour le temps réel et l'authentification. L'accent a été mis sur l'expérience utilisateur (UX) mobile.",
-    github: 'https://github.com/ton-github/task-mobile',
+      "Ce projet est à la suite de mon apprentissage d'Angular. Notre objectif était de réussir a créer, des contacts en ajoutant certains critères obligatoire. Ce n'a pas été mon projet le plus simple et le manque de temps ne m'a pas permis de terminé comme je le voulais.",
+    github: 'https://github.com/kevindekoninck/Contact-CRM',
   },
   {
     id: 4,
-    titre: 'Dashboard E-commerce',
+    titre: 'ETNAir',
     type: 'scolaire',
-    techno: ['Next.js', 'Prisma', 'PostgreSQL', 'Recharts'],
-    resume: "Tableau de bord administrateur avec visualisation de données.",
+    techno: ['Node.js', 'Prisma', 'PostgreSQL', 'React'],
+    resume: "Reproduction des services proposés par Airbnb",
     description:
-      "Projet fullstack visant à créer un dashboard pour visualiser les ventes d'une boutique. Intégration de graphiques dynamiques, gestion des commandes et connexion à une base de données relationnelle via Prisma.",
-    github: 'https://github.com/ton-github/dashboard',
-  },
-  {
-    id: 5,
-    titre: 'Clone Netflix (Front)',
-    type: 'personnel',
-    techno: ['React', 'Sass', 'TMDB API'],
-    resume: "Reproduction de l'interface Netflix avec consommation d'API externe.",
-    description:
-      "Challenge d'intégration front-end. Utilisation de l'API The Movie Database pour récupérer les films populaires, gestion du scroll horizontal et lecture de bandes-annonces. Focus sur la fidélité visuelle et les animations CSS.",
-    github: 'https://github.com/ton-github/netflix-clone',
-  },
-  {
-    id: 6,
-    titre: 'Site Vitrine Restaurant',
-    type: 'personnel',
-    techno: ['HTML5', 'CSS3', 'JavaScript Vanilla'],
-    resume: "Site web statique optimisé SEO pour un restaurant local.",
-    description:
-      "Retour aux sources avec un site sans framework pour maîtriser le DOM. Intégration d'un formulaire de réservation, galerie photo responsive et optimisation des performances (Lighthouse score 100%). Clin d'œil à mon ancien métier.",
-    github: 'https://github.com/ton-github/restaurant-site',
-    lien: 'https://restaurant-demo.com'
+      "Création d'une Base de donnée, d'une API et d'un front, le tout hébergé en ligne. Le but, apprendre à travailler en groupe tout en apprennant la création d'une base de donnée et d'une API.",
+    github: 'https://github.com/kevindekoninck/Etnair',
+    lien: 'https://etnair.harrmos.com/'
   },
 ]
 
@@ -423,8 +403,8 @@ function App() {
               >
                 <div className="mb-3 flex items-center gap-3">
                   <formation.icon className={`h-6 w-6 ${formation.color === 'purple' ? 'text-purple-400' :
-                      formation.color === 'pink' ? 'text-pink-400' :
-                        'text-blue-400'
+                    formation.color === 'pink' ? 'text-pink-400' :
+                      'text-blue-400'
                     }`} />
                   <h3 className="text-lg font-semibold">{formation.diplome}</h3>
                 </div>
@@ -474,8 +454,8 @@ function App() {
                     <div>
                       <div className="mb-4 flex items-start justify-between">
                         <span className={`rounded-full border px-3 py-1 text-xs font-medium ${projet.type === 'scolaire'
-                            ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
-                            : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
+                          ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
+                          : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
                           }`}>
                           {projet.type === 'scolaire' ? 'École' : 'Perso'}
                         </span>
@@ -527,8 +507,8 @@ function App() {
                 <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <span className={`mb-2 inline-block rounded-full border px-3 py-1 text-xs font-medium ${selectedProject.type === 'scolaire'
-                        ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
-                        : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
+                      ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
+                      : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
                       }`}>
                       {selectedProject.type === 'scolaire' ? 'Projet d\'école' : 'Projet personnel'}
                     </span>
