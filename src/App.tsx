@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import {
   Github,
   Linkedin,
+  File,
   Mail,
   MapPin,
   Code,
@@ -140,7 +141,7 @@ function App() {
           </p>
 
           <p className="mx-auto max-w-2xl text-lg text-slate-400">
-            23 ans · En reconversion professionnelle · Bachelor CDA à l'ETNA · Recherche d'alternance
+            23 ans · En reconversion professionnelle · Bachelor Concepteur Développeur d'Application à l'ETNA · Recherche d'alternance
           </p>
 
           <motion.div
@@ -150,14 +151,7 @@ function App() {
             className="flex flex-wrap justify-center gap-4 pt-4"
           >
             <a
-              href="mailto:ton.email@exemple.com"
-              className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/50 transition hover:scale-105 hover:shadow-xl hover:shadow-purple-500/60"
-            >
-              <Mail className="h-5 w-5" />
-              Me contacter
-            </a>
-            <a
-              href="https://github.com/ton-github"
+              href="https://github.com/kevindekoninck"
               target="_blank"
               className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
             >
@@ -165,12 +159,27 @@ function App() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/k%C3%A9vin-de-koninck-25aa4b233"
               target="_blank"
               className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
             >
               <Linkedin className="h-5 w-5" />
               LinkedIn
+            </a>
+            <a
+              href="/CV.pdf"
+              target="_blank"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+            >
+              <File className="h-5 w-5" />
+              Mon CV
+            </a>
+            <a
+              href="dekoni_k@etna-alternance.net"
+              className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/50 transition hover:scale-105 hover:shadow-xl hover:shadow-purple-500/60"
+            >
+              <Mail className="h-5 w-5" />
+              Me contacter
             </a>
           </motion.div>
 
@@ -308,7 +317,7 @@ function App() {
               {
                 entreprise: 'Hôtel Restaurant du Tribunal',
                 lieu: 'Mortagne-au-Perche',
-                periode: '2022 - 2024',
+                periode: '2022 - 2025',
                 poste: 'Alternance + Employé polyvalent',
                 description:
                   "1 an en alternance (Bachelor Responsable d'établissement touristique) puis 2 ans comme employé polyvalent, dont 10 mois principalement à la réception avec des responsabilités accrues.",
