@@ -175,7 +175,7 @@ function App() {
               Mon CV
             </a>
             <a
-              href="dekoni_k@etna-alternance.net"
+              href="dekoni_k@gmail.com"
               className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/50 transition hover:scale-105 hover:shadow-xl hover:shadow-purple-500/60"
             >
               <Mail className="h-5 w-5" />
