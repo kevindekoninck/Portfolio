@@ -1,7 +1,6 @@
-
-import { useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import {
   Github,
   Linkedin,
@@ -15,98 +14,106 @@ import {
   ExternalLink,
   Calendar,
   School,
-  Server
-} from 'lucide-react'
+  Server,
+} from "lucide-react";
 
 type Project = {
-  id: number
-  titre: string
-  type: 'personnel' | 'scolaire'
-  techno: string[]
-  resume: string
-  description: string
-  github: string
-  lien?: string
-}
+  id: number;
+  titre: string;
+  type: "personnel" | "scolaire";
+  techno: string[];
+  resume: string;
+  description: string;
+  github: string;
+  lien?: string;
+};
 
 // J'ai ajouté 5 nouveaux projets fictifs cohérents avec un profil ETNA/Reconversion
 const initialProjects: Project[] = [
   {
     id: 1,
-    titre: 'Blog-Manager',
-    type: 'scolaire',
-    techno: ['React', 'TypeScript', 'CSS'],
+    titre: "Blog-Manager",
+    type: "scolaire",
+    techno: ["React", "TypeScript", "CSS"],
     resume: "Un site pour poster, éditer et supprimé des articles.",
     description:
       "Ce projet à été mis en place pour mettre en application les compétences acquises en React et TypeScript. Le but, un site sur lequel on peut créer, éditer ou supprimé une article.",
-    github: 'https://github.com/kevindekoninck/blog-manager',
+    github: "https://github.com/kevindekoninck/blog-manager",
   },
   {
     id: 2,
-    titre: 'To-do-manager',
-    type: 'scolaire',
-    techno: ['Vue.js', 'TypeScript', 'CSS'],
+    titre: "To-do-manager",
+    type: "scolaire",
+    techno: ["Vue.js", "TypeScript", "CSS"],
     resume: "Le Front-end complet inspiré par trello.",
     description:
       "Ce projet est inspiré de trello en terme de fonctionnalité. Après notre semaine d'apprentissage de Vue.js, mon objectif, était de mettre en oeuvre ce que j'ai pu apprendre et mes inspirations perso.",
-    github: 'https://github.com/kevindekoninck/To-Do-Manager',
+    github: "https://github.com/kevindekoninck/To-Do-Manager",
   },
   {
     id: 3,
-    titre: 'Contact-CRM',
-    type: 'scolaire',
-    techno: ['Angular', 'Typescript', 'CSS'],
+    titre: "Contact-CRM",
+    type: "scolaire",
+    techno: ["Angular", "Typescript", "CSS"],
     resume: "Site de contact incluant le nom, l'email, le téléphone, ...",
     description:
       "Ce projet est à la suite de mon apprentissage d'Angular. Notre objectif était de réussir a créer, des contacts en ajoutant certains critères obligatoire. Ce n'a pas été mon projet le plus simple et le manque de temps ne m'a pas permis de terminé comme je le voulais.",
-    github: 'https://github.com/kevindekoninck/Contact-CRM',
+    github: "https://github.com/kevindekoninck/Contact-CRM",
   },
   {
     id: 4,
-    titre: 'ETNAir',
-    type: 'scolaire',
-    techno: ['Node.js', 'Prisma', 'PostgreSQL', 'React'],
+    titre: "ETNAir",
+    type: "scolaire",
+    techno: ["Node.js", "Prisma", "PostgreSQL", "React"],
     resume: "Reproduction des services proposés par Airbnb",
     description:
       "Création d'une Base de donnée, d'une API et d'un front, le tout hébergé en ligne. Le but, apprendre à travailler en groupe tout en apprennant la création d'une base de donnée et d'une API.",
-    github: 'https://github.com/kevindekoninck/Etnair',
-    lien: 'https://etnair.harrmos.com/'
+    github: "https://github.com/kevindekoninck/Etnair",
+    lien: "https://etnair.harrmos.com/",
   },
-]
+];
 
-function Section({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+function Section({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
     <motion.section
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={className}
     >
       {children}
     </motion.section>
-  )
+  );
 }
 
 function App() {
-  const projects = initialProjects
-  const [selectedProject, setSelectedProject] = useState<Project | null>(initialProjects[0] ?? null)
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  const projects = initialProjects;
+  const [selectedProject, setSelectedProject] = useState<Project | null>(
+    initialProjects[0] ?? null,
+  );
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
 
   return (
-    <div className="relative min-h-screen text-slate-200 selection:bg-purple-500/30">
+    <div className="relative min-h-screen text-slate-200 selection:bg-sltae-500/30">
       {/* Background gradient animé */}
       <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-linear-to-br from-slate-950 via-purple-950/30 to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(168,85,247,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(236,72,153,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-linear-to-br from-black via-black to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(236,225,213,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(245,133,0,0.15),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
       </div>
 
@@ -125,15 +132,14 @@ function App() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm text-purple-300"
+            className="inline-flex items-center gap-2  border-slate-500/30  px-4 py-2 text-sm text-orange-300"
           >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-purple-400" />
             En recherche d'alternance
           </motion.div>
 
           <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
-            <span className="text-white">De Koninck</span>{' '}
-            <span className="gradient-text">Kévin</span>
+            <span className="text-white">De Koninck</span>{" "}
+            <span className="text-orange-800">Kévin</span>
           </h1>
 
           <p className="text-xl text-slate-300 md:text-2xl">
@@ -141,7 +147,8 @@ function App() {
           </p>
 
           <p className="mx-auto max-w-2xl text-lg text-slate-400">
-            23 ans · En reconversion professionnelle · Bachelor Concepteur Développeur d'Application à l'ETNA · Recherche d'alternance
+            23 ans · En reconversion professionnelle · Bachelor Concepteur
+            Développeur d'Application à l'ETNA · Recherche d'alternance
           </p>
 
           <motion.div
@@ -153,7 +160,7 @@ function App() {
             <a
               href="https://github.com/kevindekoninck"
               target="_blank"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+              className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
             >
               <Github className="h-5 w-5" />
               GitHub
@@ -161,7 +168,7 @@ function App() {
             <a
               href="https://www.linkedin.com/in/k%C3%A9vin-de-koninck-25aa4b233"
               target="_blank"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+              className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
             >
               <Linkedin className="h-5 w-5" />
               LinkedIn
@@ -169,14 +176,14 @@ function App() {
             <a
               href="/CV.pdf"
               target="_blank"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+              className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
             >
               <File className="h-5 w-5" />
               Mon CV
             </a>
             <a
               href="mailto:dekoni_k@etna-alternance.net"
-              className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/50 transition hover:scale-105 hover:shadow-xl hover:shadow-purple-500/60"
+              className="group inline-flex items-center gap-2 rounded-xl bg-[#ffffff01] border hover:border-orange-900 border-white px-6 py-3 font-semibold text-white shadow-lg  transition hover:scale-105 hover:shadow-lg hover:shadow-blackk/60"
             >
               <Mail className="h-5 w-5" />
               Me contacter
@@ -191,10 +198,12 @@ function App() {
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               className="inline-block"
             >
-              <ArrowRight className="h-6 w-6 rotate-90 text-purple-400" />
+              <a href="#propos">
+                <ArrowRight className="h-6 w-6 rotate-90 text-orange-400" />
+              </a>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -202,7 +211,7 @@ function App() {
 
       {/* Section À propos */}
       <Section className="section-padding">
-        <div className="mx-auto max-w-6xl">
+        <div id="propos" className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -211,9 +220,9 @@ function App() {
             className="mb-12"
           >
             <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              <span className="gradient-text">À propos</span>
+              <span className="">À propos</span>
             </h2>
-            <div className="h-1 w-24 rounded-full bg-linear-to-r from-purple-500 to-pink-500" />
+            <div className="h-1 w-24 rounded-full bg-linear-to-r from-orange-500 to-pink-500" />
           </motion.div>
 
           <div className="grid gap-8 md:grid-cols-2">
@@ -225,19 +234,23 @@ function App() {
               className="glass-card rounded-3xl p-8"
             >
               <h3 className="mb-4 flex items-center gap-3 text-2xl font-semibold">
-                <Briefcase className="h-6 w-6 text-purple-400" />
+                <Briefcase className="h-6 w-6 text-orange-400" />
                 Mon parcours
               </h3>
               <p className="mb-4 text-slate-300 leading-relaxed">
-                Après 5 ans dans l'hôtellerie-restauration où j'ai développé des compétences en relation client,
-                gestion du stress et travail en équipe, je me suis lancé dans une reconversion professionnelle vers le
-                développement d'applications.
+                Après 5 ans dans l'hôtellerie-restauration où j'ai développé des
+                compétences en relation client, gestion du stress et travail en
+                équipe, je me suis lancé dans une reconversion professionnelle
+                vers le développement d'applications.
               </p>
               <p className="text-slate-300 leading-relaxed">
-                Aujourd'hui en Bachelor{' '}
-                <span className="font-semibold text-purple-300">Concepteur Développeur d'Applications</span> à l'ETNA
-                d'Ivry-sur-Seine, je recherche une alternance pour approfondir mes compétences et poursuivre ensuite
-                vers un Master dans le même domaine.
+                Aujourd'hui en Bachelor{" "}
+                <span className="font-semibold text-orange-300">
+                  Concepteur Développeur d'Applications
+                </span>{" "}
+                à l'ETNA d'Ivry-sur-Seine, je recherche une alternance pour
+                approfondir mes compétences et poursuivre ensuite vers un Master
+                dans le même domaine.
               </p>
             </motion.div>
 
@@ -249,17 +262,31 @@ function App() {
               className="glass-card rounded-3xl p-8"
             >
               <h3 className="mb-4 flex items-center gap-3 text-2xl font-semibold">
-                <School className="h-6 w-6 text-pink-400" />
-                Pédagogie ETNA
+                <School className="h-6 w-6 text-orange-400" />
+                ETNA
               </h3>
               <p className="mb-4 text-slate-300 leading-relaxed">
-                La pédagogie de l'ETNA est une <span className="font-semibold text-pink-300">pédagogie par projet</span>
-                . Nous avons quelques cours pour comprendre la stack et l'utiliser légèrement, puis nous avons un projet
-                à réaliser avec celle-ci.
+                La pédagogie de l'ETNA (école des technologies numériques avancées) est une{" "}
+                <span className="font-semibold text-orange-300">
+                  pédagogie par projet
+                </span>
+                . Nous avons quelques cours pour comprendre la stack et
+                l'utiliser légèrement, puis nous avons un projet à réaliser avec
+                celle-ci.
               </p>
               <p className="text-slate-300 leading-relaxed">
-                Cette approche développe la rigueur, la curiosité et la capacité à apprendre rapidement en situation
-                réelle.
+                Cette approche développe la rigueur, la curiosité et la capacité
+                à apprendre rapidement en situation réelle.
+              </p>
+              <br />
+              <p className="text-slate-300 leading-relaxed">
+                Rytme basé sur des runs de 3 semaines. Dans ces runs,{" "}
+                <span className="font-semibold text-orange-300">
+                  33h d'e-learning
+                </span> et{" "}
+                <span className="font-semibold text-orange-300">
+                  un vendredi
+                </span> en présentiel (séminaire).
               </p>
             </motion.div>
           </div>
@@ -271,18 +298,25 @@ function App() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-8 glass-card rounded-3xl p-8"
           >
-            <h3 className="mb-6 text-xl font-semibold">Soft skills issus de l'hôtellerie</h3>
+            <h3 className="mb-6 text-xl font-semibold">
+              Soft skills
+            </h3>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-              {['Relation client', 'Gestion du stress', 'Respect des délais', 'Travail en équipe', 'Sens du détail', 'Responsabilisation'].map(
-                (skill) => (
-                  <div
-                    key={skill}
-                    className="rounded-xl border border-purple-500/20 bg-purple-500/5 px-4 py-3 text-center text-sm font-medium text-purple-200"
-                  >
-                    {skill}
-                  </div>
-                ),
-              )}
+              {[
+                "Relation client",
+                "Gestion du stress",
+                "Respect des délais",
+                "Travail en équipe",
+                "Sens du détail",
+                "Responsabilisation",
+              ].map((skill) => (
+                <div
+                  key={skill}
+                  className="rounded-xl border border-orange-500/20 bg-yellow-500/5 px-4 py-3 text-center text-sm font-medium text-orange-200"
+                >
+                  {skill}
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -299,28 +333,29 @@ function App() {
             className="mb-12"
           >
             <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              <span className="gradient-text">Expériences</span>
+              <span className="">Expériences</span>
             </h2>
-            <div className="h-1 w-24 rounded-full bg-linear-to-r from-purple-500 to-pink-500" />
+            <div className="h-1 w-24 rounded-full bg-linear-to-r from-orange-500 to-pink-500" />
           </motion.div>
 
           <div className="space-y-6">
             {[
               {
-                entreprise: 'La Villa Marinette',
-                lieu: 'Gazeran',
-                periode: '2020 - 2022',
-                poste: 'Alternance cuisine',
-                description: "2 ans d'alternance en cuisine dans le cadre du BTS MHR option cuisine : rigueur, cadence, organisation.",
+                entreprise: "Hôtel Restaurant du Tribunal",
+                lieu: "Mortagne-au-Perche",
+                periode: "2022 - 2025",
+                poste: "Alternance + Employé polyvalent",
+                description:
+                  "1 an en alternance (Bachelor Responsable d'établissement touristique) puis 2 ans comme employé polyvalent, dont 10 mois principalement à la réception avec des responsabilités accrues.",
                 icon: Briefcase,
               },
               {
-                entreprise: 'Hôtel Restaurant du Tribunal',
-                lieu: 'Mortagne-au-Perche',
-                periode: '2022 - 2025',
-                poste: 'Alternance + Employé polyvalent',
+                entreprise: "La Villa Marinette",
+                lieu: "Gazeran",
+                periode: "2020 - 2022",
+                poste: "Alternance cuisine",
                 description:
-                  "1 an en alternance (Bachelor Responsable d'établissement touristique) puis 2 ans comme employé polyvalent, dont 10 mois principalement à la réception avec des responsabilités accrues.",
+                  "2 ans d'alternance en cuisine dans le cadre du BTS MHR option cuisine : rigueur, cadence, organisation.",
                 icon: Briefcase,
               },
             ].map((exp, index) => (
@@ -330,13 +365,15 @@ function App() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass-card group rounded-3xl p-6 transition hover:border-purple-500/30 md:p-8"
+                className="glass-card group rounded-3xl p-6 transition hover:border-yellow-500/30 md:p-8"
               >
                 <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                   <div className="flex-1">
                     <div className="mb-2 flex items-center gap-3">
-                      <exp.icon className="h-5 w-5 text-purple-400" />
-                      <h3 className="text-xl font-semibold">{exp.entreprise}</h3>
+                      <exp.icon className="h-5 w-5 text-orange-400" />
+                      <h3 className="text-xl font-semibold">
+                        {exp.entreprise}
+                      </h3>
                     </div>
                     <div className="mb-2 flex items-center gap-2 text-sm text-slate-400">
                       <MapPin className="h-4 w-4" />
@@ -345,7 +382,9 @@ function App() {
                       <Calendar className="h-4 w-4" />
                       <span>{exp.periode}</span>
                     </div>
-                    <p className="mb-2 font-medium text-purple-300">{exp.poste}</p>
+                    <p className="mb-2 font-medium text-orange-300">
+                      {exp.poste}
+                    </p>
                     <p className="text-slate-300">{exp.description}</p>
                   </div>
                 </div>
@@ -366,40 +405,40 @@ function App() {
             className="mb-12"
           >
             <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              <span className="gradient-text">Formation</span>
+              <span className="">Formations</span>
             </h2>
-            <div className="h-1 w-24 rounded-full bg-linear-to-r from-purple-500 to-pink-500" />
+            <div className="h-1 w-24 rounded-full bg-linear-to-r from-orange-500 to-pink-500" />
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2">
             {[
               {
-                diplome: 'Bachelor Concepteur Développeur d\'Applications',
-                ecole: 'ETNA Ivry-sur-Seine',
-                periode: '2025 - 2026',
+                diplome: "Bachelor Concepteur Développeur d'Applications",
+                ecole: "ETNA Ivry-sur-Seine",
+                periode: "2025 - 2026",
                 icon: GraduationCap,
-                color: 'purple',
+                color: "purple",
               },
               {
-                diplome: 'Bachelor Responsable d\'établissement touristique',
-                ecole: 'CFA Trajectoire, Guyancourt',
-                periode: '2022 - 2023',
+                diplome: "Bachelor Responsable d'établissement touristique",
+                ecole: "CFA Trajectoire, Guyancourt",
+                periode: "2022 - 2023",
                 icon: GraduationCap,
-                color: 'pink',
+                color: "pink",
               },
               {
-                diplome: 'BTS MHR option B (cuisine)',
-                ecole: 'Lycée d\'hôtellerie et de tourisme, Guyancourt',
-                periode: '2020 - 2022',
+                diplome: "BTS MHR option B (cuisine)",
+                ecole: "Lycée d'hôtellerie et de tourisme, Guyancourt",
+                periode: "2020 - 2022",
                 icon: GraduationCap,
-                color: 'blue',
+                color: "blue",
               },
               {
-                diplome: 'Bac Pro Cuisine',
-                ecole: 'Lycée d\'hôtellerie et de tourisme, Guyancourt',
-                periode: '2017 - 2020',
+                diplome: "Bac Pro Cuisine",
+                ecole: "Lycée d'hôtellerie et de tourisme, Guyancourt",
+                periode: "2017 - 2020",
                 icon: GraduationCap,
-                color: 'purple',
+                color: "purple",
               },
             ].map((formation, index) => (
               <motion.div
@@ -408,17 +447,23 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass-card rounded-3xl p-6 transition hover:border-purple-500/30"
+                className="glass-card rounded-3xl p-6 transition hover:border-yellow-500/30"
               >
                 <div className="mb-3 flex items-center gap-3">
-                  <formation.icon className={`h-6 w-6 ${formation.color === 'purple' ? 'text-purple-400' :
-                    formation.color === 'pink' ? 'text-pink-400' :
-                      'text-blue-400'
-                    }`} />
+                  <formation.icon
+                    className={`h-6 w-6 ${formation.color === "purple"
+                      ? "text-purple-400"
+                      : formation.color === "pink"
+                        ? "text-pink-400"
+                        : "text-blue-400"
+                      }`}
+                  />
                   <h3 className="text-lg font-semibold">{formation.diplome}</h3>
                 </div>
                 <p className="mb-2 text-sm text-slate-400">{formation.ecole}</p>
-                <p className="text-sm font-medium text-purple-300">{formation.periode}</p>
+                <p className="text-sm font-medium text-orange-300">
+                  {formation.periode}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -436,9 +481,9 @@ function App() {
             className="mb-8"
           >
             <h2 className="mb-4 text-4xl font-bold md:text-5xl">
-              <span className="gradient-text">Projets</span>
+              <span className="">Projets</span>
             </h2>
-            <div className="h-1 w-24 rounded-full bg-linear-to-r from-purple-500 to-pink-500" />
+            <div className="h-1 w-24 rounded-full bg-linear-to-r from-orange-500 to-pink-500" />
           </motion.div>
 
           <div className="space-y-6">
@@ -447,7 +492,7 @@ function App() {
             {/* Grille de Projets optimisée */}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((projet, index) => {
-                const isSelected = selectedProject?.id === projet.id
+                const isSelected = selectedProject?.id === projet.id;
                 return (
                   <motion.div
                     key={projet.id}
@@ -457,22 +502,30 @@ function App() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{ y: -8, scale: 1.02 }}
                     onClick={() => setSelectedProject(projet)}
-                    className={`group glass-card cursor-pointer flex flex-col justify-between rounded-3xl p-6 transition duration-300 ${isSelected ? 'gradient-border border-2 bg-white/10' : 'hover:bg-white/5'
+                    className={`group glass-card cursor-pointer flex flex-col justify-between rounded-3xl p-6 transition duration-300 ${isSelected
+                      ? "gradient-border bg-amber-100 border border-amber-300 "
+                      : "hover:bg-white/5"
                       }`}
                   >
                     <div>
                       <div className="mb-4 flex items-start justify-between">
-                        <span className={`rounded-full border px-3 py-1 text-xs font-medium ${projet.type === 'scolaire'
-                          ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
-                          : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
-                          }`}>
-                          {projet.type === 'scolaire' ? 'École' : 'Perso'}
+                        <span
+                          className={`rounded-full border px-3 py-1 text-xs font-medium ${projet.type === "scolaire"
+                            ? "border-yellow-500/30 bg-orange-500/10 text-orange-300"
+                            : "border-orange-500/30 bg-yellow-500/10 text-yellow-300"
+                            }`}
+                        >
+                          {projet.type === "scolaire" ? "École" : "Perso"}
                         </span>
                         {/* Icone dynamique selon les technos principales (simplifié ici avec Code) */}
-                        <Code className="h-5 w-5 text-slate-400 transition group-hover:text-purple-400" />
+                        <Code className="h-5 w-5 text-slate-400 transition group-hover:text-orange-400" />
                       </div>
-                      <h4 className="mb-2 text-xl font-semibold group-hover:text-purple-300 transition-colors">{projet.titre}</h4>
-                      <p className="mb-4 line-clamp-2 text-sm text-slate-400">{projet.resume}</p>
+                      <h4 className="mb-2 text-xl font-semibold group-hover:text-yellow-300 transition-colors">
+                        {projet.titre}
+                      </h4>
+                      <p className="mb-4 line-clamp-2 text-sm text-slate-400">
+                        {projet.resume}
+                      </p>
 
                       {projet.techno.length > 0 && (
                         <div className="mb-4 flex flex-wrap gap-2">
@@ -493,13 +546,19 @@ function App() {
                       )}
                     </div>
 
-                    <div className={`mt-auto flex items-center gap-2 text-sm font-medium transition ${isSelected ? 'text-purple-300' : 'text-slate-400 group-hover:text-white'
-                      }`}>
+                    <div
+                      className={`mt-auto flex items-center gap-2 text-sm font-medium transition ${isSelected
+                        ? "text-orange-300"
+                        : "text-slate-400 group-hover:text-white"
+                        }`}
+                    >
                       <span>Voir les détails</span>
-                      <ArrowRight className={`h-4 w-4 transition-transform ${isSelected ? 'translate-x-1' : 'group-hover:translate-x-1'}`} />
+                      <ArrowRight
+                        className={`h-4 w-4 transition-transform ${isSelected ? "translate-x-1" : "group-hover:translate-x-1"}`}
+                      />
                     </div>
                   </motion.div>
-                )
+                );
               })}
             </div>
 
@@ -515,11 +574,15 @@ function App() {
               >
                 <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <span className={`mb-2 inline-block rounded-full border px-3 py-1 text-xs font-medium ${selectedProject.type === 'scolaire'
-                      ? 'border-purple-500/30 bg-purple-500/10 text-purple-300'
-                      : 'border-pink-500/30 bg-pink-500/10 text-pink-300'
-                      }`}>
-                      {selectedProject.type === 'scolaire' ? 'Projet d\'école' : 'Projet personnel'}
+                    <span
+                      className={`mb-2 inline-block rounded-full border px-3 py-1 text-xs font-medium ${selectedProject.type === "scolaire"
+                        ? "border-orange-500/30 bg-yellow-500/10 text-orange-300"
+                        : "border-yellow-500/30 bg-orange-500/10 text-yellow-300"
+                        }`}
+                    >
+                      {selectedProject.type === "scolaire"
+                        ? "Projet d'école"
+                        : "Projet personnel"}
                     </span>
                     <h3 className="mt-2 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
                       {selectedProject.titre}
@@ -538,7 +601,7 @@ function App() {
                       <a
                         href={selectedProject.lien}
                         target="_blank"
-                        className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 px-4 py-2 font-semibold text-white shadow-lg shadow-purple-500/50 transition hover:scale-105"
+                        className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-yellow-500 px-4 py-2 font-semibold text-white shadow-lg  transition hover:scale-105"
                       >
                         <ExternalLink className="h-5 w-5" />
                         Voir la démo
@@ -549,19 +612,24 @@ function App() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="md:col-span-2">
-                    <h4 className="text-lg font-semibold text-slate-200 mb-2">À propos du projet</h4>
-                    <p className="text-lg text-slate-300 leading-relaxed">{selectedProject.description}</p>
+                    <h4 className="text-lg font-semibold text-slate-200 mb-2">
+                      À propos du projet
+                    </h4>
+                    <p className="text-lg text-slate-300 leading-relaxed">
+                      {selectedProject.description}
+                    </p>
                   </div>
 
                   <div className="bg-white/5 rounded-2xl p-6 border border-white/5 h-fit">
                     <p className="mb-4 font-semibold text-slate-200 flex items-center gap-2">
-                      <Server className="w-4 h-4 text-purple-400" /> Stack technique
+                      <Server className="w-4 h-4 text-orange-400" /> Stack
+                      technique
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.techno.map((t) => (
                         <span
                           key={t}
-                          className="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 text-xs font-medium text-purple-200"
+                          className="rounded-full border border-orange-500/30 bg-yellow-500/10 px-3 py-1.5 text-xs font-medium text-orange-200"
                         >
                           {t}
                         </span>
@@ -579,13 +647,13 @@ function App() {
       <footer className="section-padding border-t border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-slate-400">
-            © 2025 De Koninck Kévin · Portfolio développé avec React, TypeScript et TailwindCSS
+            © 2025 De Koninck Kévin · Portfolio développé avec React, TypeScript
+            et TailwindCSS
           </p>
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
-
+export default App;
