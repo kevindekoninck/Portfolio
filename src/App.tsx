@@ -28,7 +28,6 @@ type Project = {
   lien?: string;
 };
 
-// J'ai ajouté 5 nouveaux projets fictifs cohérents avec un profil ETNA/Reconversion
 const initialProjects: Project[] = [
   {
     id: 1,
