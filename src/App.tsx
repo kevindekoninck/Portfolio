@@ -35,9 +35,9 @@ const initialProjects: Project[] = [
     titre: "Blog-Manager",
     type: "scolaire",
     techno: ["React", "TypeScript", "CSS"],
-    resume: "Un site pour poster, éditer et supprimé des articles.",
+    resume: "Un site pour poster, éditer et supprimer des articles.",
     description:
-      "Ce projet à été mis en place pour mettre en application les compétences acquises en React et TypeScript. Le but, un site sur lequel on peut créer, éditer ou supprimé une article.",
+      "Ce projet à été mis en place pour mettre en application les compétences acquises en React et TypeScript. Le but, un site sur lequel on peut créer, éditer ou supprimer un article.",
     github: "https://github.com/kevindekoninck/blog-manager",
   },
   {
@@ -57,7 +57,7 @@ const initialProjects: Project[] = [
     techno: ["Angular", "Typescript", "CSS"],
     resume: "Site de contact incluant le nom, l'email, le téléphone, ...",
     description:
-      "Ce projet est à la suite de mon apprentissage d'Angular. Notre objectif était de réussir a créer, des contacts en ajoutant certains critères obligatoire. Ce n'a pas été mon projet le plus simple et le manque de temps ne m'a pas permis de terminé comme je le voulais.",
+      "Ce projet est à la suite de mon apprentissage d'Angular. Notre objectif était de réussir a créer, des contacts en ajoutant certains critères obligatoires. Ce n'a pas été mon projet le plus simple et le manque de temps ne m'a pas permis de terminer comme je le voulais.",
     github: "https://github.com/kevindekoninck/Contact-CRM",
   },
   {
